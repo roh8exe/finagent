@@ -21,7 +21,7 @@ def run_for_ticker(ticker):
     df = df[(df.index >= CFG.train_start) & (df.index < CFG.test_end)]
     encoder = TextEncoder(CFG.embed_model)
     store = VectorStore(dim=encoder.embed(["x"]).shape[1])
-    llm = LocalLLM(name="Offline-FinAgent")
+    llm = LocalLLM(model_name="TinyLlama/TinyLlama-1.1B-Chat-v1.0")
 
     prompts = {
         "mi": "finagent/prompts/market_intel.txt",
