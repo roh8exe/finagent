@@ -42,7 +42,6 @@ def run_for_ticker(ticker):
             mi_out = MI.latest(ticker, dt, train_df.loc[:dt].tail(60))
             MI.write_to_memory(ticker, dt, mi_out)
 
-        # You may also precompute LLR/HLR during training, but it’s optional.
 
     # TEST PHASE: daily decisions
     test_df = df[(df.index >= CFG.test_start) & (df.index < CFG.test_end)]
@@ -116,6 +115,6 @@ if __name__ == "__main__":
             {"date": d.date(), "action": a}
             for d, a in dec.items()
         ]).to_csv(f"data/decisions_{t}.csv", index=False)
-        print(f"✅ Saved predictions for {t} to data/decisions_{t}.csv")
+        print(f" Saved predictions for {t} to data/decisions_{t}.csv")
 
         results[t] = {"metrics": m}
